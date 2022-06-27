@@ -1,0 +1,70 @@
+<?php
+
+$con = mysqli_connect('localhost','root','');
+
+if ($con){
+
+    echo "Connection successfully";
+}
+else
+echo "No connection";
+
+mysqli_select_db($con,'Projectdata');
+
+$Name = $_POST['Name'];
+$Email = $_POST['Email'];
+$Phone = $_POST['Phone'];
+$Messages = $_POST['Messages'];
+
+$query = "INSERT INTO `Forminside`(`User`, `Email`, `Phone`, `Message`) VALUES ('$Name','$Email','$Phone','$Messages')";
+  echo"$query";
+
+$mysqli_query($con ,$query);
+
+
+
+?>
+
+
+
+<?php
+
+
+$servername = "localhost";
+$username = "root";
+$password = " ";
+$dbname = "Projectdata";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//} 
+//echo "Connected successfully";
+$con = mysqli_connect('localhost','root','');
+
+if ($conn){
+
+    echo "Connection successfully";
+}
+else
+echo "No connection";
+
+
+
+$name = $_POST['Name'];
+$email = $_POST['Email'];
+$phone = $_POST['Phone'];
+$message = $_POST['Messages'];
+
+$sql = "INSERT INTO Forminside(User, Email,Phone, Message ) VALUES ('$name', '$email','$phone', '$message')";
+
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$conn->close();
+?>
